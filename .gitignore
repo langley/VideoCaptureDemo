@@ -51,5 +51,8 @@ Thumbs.db
 # Eclipse Artifacts #
 #####################
 .metadata/*
+.cache
+.settings/*
+
 
 
