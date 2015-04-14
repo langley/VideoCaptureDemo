@@ -33,8 +33,8 @@ class ScalaVideoPlaybackActivity extends SActivity with OnPreparedListener with 
 
     var uri: Uri 
 
-    @Override
-    def onCreate(bundle: Bundle): Unit = {
+    
+    override def onCreate(bundle: Bundle): Unit = {
         super.onCreate(bundle)
         super.setContentView(R.layout.video_playback)
         this.videoView = super.findViewById(R.id.video).asInstanceOf[VideoView]
@@ -52,15 +52,15 @@ class ScalaVideoPlaybackActivity extends SActivity with OnPreparedListener with 
         this.deleteButton.setEnabled(!playing);
     }
 
-    @Override
-    protected def onResume(): Unit = {
+    
+    override def onResume(): Unit = {
         super.onResume();
         this.videoView.setVideoURI(this.uri);
         this.videoView.setOnPreparedListener(this);
     }
 
-    @Override
-    protected def onPause(): Unit = {
+    
+    override def onPause(): Unit = {
         super.onPause();
         this.videoView.stopPlayback();
     }
