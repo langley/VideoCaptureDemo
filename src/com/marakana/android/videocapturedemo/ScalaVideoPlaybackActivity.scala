@@ -1,6 +1,9 @@
 
 package com.marakana.android.videocapturedemo;
 
+import org.scaloid.common._
+import android.graphics.Color
+
 import java.io.File;
 
 import android.app.Activity;
@@ -15,55 +18,54 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class VideoPlaybackActivity extends Activity implements OnPreparedListener,
-        OnCompletionListener {
-    private static final String TAG = "VideoPlaybackActivity";
+class VideoPlaybackActivity extends SActivity with OnPreparedListener with OnCompletionListener {
+    val TAG = "VideoPlaybackActivity"
 
-    private VideoView videoView;
+    var videoView: VideoView =  super.findViewById(R.id.video).asInstanceOf[VideoView]
 
-    private ImageButton backButton;
+    var backButton: ImageButton =  super.findViewById(R.id.backButton).asInstanceOf[ImageButton]
 
-    private ImageButton playButton;
+    var playButton: ImageButton = super.findViewById(R.id.playButton).asInstanceOf[ImageButton] 
 
-    private ImageButton stopButton;
+    var stopButton: ImageButton =  super.findViewById(R.id.stopButton).asInstanceOf[ImageButton]
 
-    private ImageButton deleteButton;
+    var deleteButton: ImageButton = super.findViewById(R.id.deleteButton).asInstanceOf[ImageButton] 
 
-    private Uri uri;
+    var uri: Uri = super.getIntent().getData();
 
-    @Override
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        super.setContentView(R.layout.video_playback);
-        this.videoView = (VideoView)super.findViewById(R.id.video);
+    
+    override def onCreate(bundle: Bundle): Unit = {
+        super.onCreate(bundle)
+        super.setContentView(R.layout.video_playback)
+        this.videoView = super.findViewById(R.id.video).asInstanceOf[VideoView]
         this.uri = super.getIntent().getData();
-        this.backButton = (ImageButton)super.findViewById(R.id.backButton);
-        this.playButton = (ImageButton)super.findViewById(R.id.playButton);
-        this.stopButton = (ImageButton)super.findViewById(R.id.stopButton);
-        this.deleteButton = (ImageButton)super.findViewById(R.id.deleteButton);
+        this.backButton = super.findViewById(R.id.backButton).asInstanceOf[ImageButton]
+        this.playButton = super.findViewById(R.id.playButton).asInstanceOf[ImageButton]
+        this.stopButton = super.findViewById(R.id.stopButton).asInstanceOf[ImageButton]
+        this.deleteButton = super.findViewById(R.id.deleteButton).asInstanceOf[ImageButton]
     }
 
-    private void toggleButtons(boolean playing) {
+    private def toggleButtons(playing: Boolean): Unit = {
         this.backButton.setEnabled(!playing);
-        this.playButton.setVisibility(playing ? View.GONE : View.VISIBLE);
-        this.stopButton.setVisibility(playing ? View.VISIBLE : View.GONE);
+        this.playButton.setVisibility(if (playing) View.GONE else View.VISIBLE)
+        this.stopButton.setVisibility(if (playing) View.VISIBLE else View.GONE) 
         this.deleteButton.setEnabled(!playing);
     }
 
-    @Override
-    protected void onResume() {
+    
+    override def onResume(): Unit = {
         super.onResume();
         this.videoView.setVideoURI(this.uri);
         this.videoView.setOnPreparedListener(this);
     }
 
-    @Override
-    protected void onPause() {
+    
+    override def onPause(): Unit = {
         super.onPause();
         this.videoView.stopPlayback();
     }
 
-    public void onPrepared(MediaPlayer mp) {
+    def onPrepared(mp: MediaPlayer): Unit = {
         Log.d(TAG, "Prepared. Subscribing for completion callback.");
         this.videoView.setOnCompletionListener(this);
         Log.d(TAG, "Starting plackback");
@@ -72,7 +74,7 @@ public class VideoPlaybackActivity extends Activity implements OnPreparedListene
         this.toggleButtons(true);
     }
 
-    public void onCompletion(MediaPlayer mp) {
+    def onCompletion(mp: MediaPlayer ): Unit = {
         Log.d(TAG, "Completed playback. Go to beginning.");
         this.videoView.seekTo(0);
         this.notifyUser(R.string.completed_playback);
@@ -80,19 +82,19 @@ public class VideoPlaybackActivity extends Activity implements OnPreparedListene
     }
 
     // gets called by the button press
-    public void back(View v) {
+    def back(v: View): Unit = {
         Log.d(TAG, "Going back");
         super.finish();
     }
 
     // gets called by the button press
-    public void play(View v) {
+    def play(v: View): Unit = {
         Log.d(TAG, "Playing");
         this.videoView.start();
         this.toggleButtons(true);
     }
 
-    public void stop(View v) {
+    def stop(v: View): Unit =  {
         Log.d(TAG, "Stopping");
         this.videoView.pause();
         this.videoView.seekTo(0);
@@ -100,7 +102,7 @@ public class VideoPlaybackActivity extends Activity implements OnPreparedListene
     }
 
     // gets called by the button press
-    public void delete(View v) {
+    def delete(v: View): Unit = {
         if (new File(this.uri.getPath()).delete()) {
             Log.d(TAG, "Deleted: " + this.uri);
             this.notifyUser(R.string.deleted);
@@ -112,7 +114,7 @@ public class VideoPlaybackActivity extends Activity implements OnPreparedListene
         super.finish();
     }
 
-    private void notifyUser(int messageResource) {
+    private def notifyUser(messageResource: Int): Unit = {
         Toast.makeText(this, messageResource, Toast.LENGTH_SHORT).show();
     }
 }
