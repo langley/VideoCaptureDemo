@@ -1,0 +1,22 @@
+04-14 21:33:56.966: E/AndroidRuntime(7165): FATAL EXCEPTION: main
+04-14 21:33:56.966: E/AndroidRuntime(7165): Process: com.marakana.android.videocapturedemo, PID: 7165
+04-14 21:33:56.966: E/AndroidRuntime(7165): java.lang.RuntimeException: Unable to instantiate activity ComponentInfo{com.marakana.android.videocapturedemo/com.marakana.android.videocapturedemo.ScalaVideoPlaybackActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'android.view.View android.view.Window.findViewById(int)' on a null object reference
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2514)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2726)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.ActivityThread.access$900(ActivityThread.java:172)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1421)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.os.Handler.dispatchMessage(Handler.java:102)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.os.Looper.loop(Looper.java:145)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.ActivityThread.main(ActivityThread.java:5835)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at java.lang.reflect.Method.invoke(Native Method)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at java.lang.reflect.Method.invoke(Method.java:372)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1388)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1183)
+04-14 21:33:56.966: E/AndroidRuntime(7165): Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'android.view.View android.view.Window.findViewById(int)' on a null object reference
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.Activity.findViewById(Activity.java:2168)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at com.marakana.android.videocapturedemo.ScalaVideoPlaybackActivity.<init>(ScalaVideoPlaybackActivity.scala:24)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at java.lang.reflect.Constructor.newInstance(Native Method)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at java.lang.Class.newInstance(Class.java:1650)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.Instrumentation.newActivity(Instrumentation.java:1079)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2504)
+04-14 21:33:56.966: E/AndroidRuntime(7165): 	... 10 more

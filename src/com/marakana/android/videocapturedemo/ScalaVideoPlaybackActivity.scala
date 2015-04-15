@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-class VideoPlaybackActivity extends SActivity with OnPreparedListener with OnCompletionListener {
+class ScalaVideoPlaybackActivity extends SActivity with OnPreparedListener with OnCompletionListener {
     val TAG = "VideoPlaybackActivity"
 
     var videoView: VideoView =  super.findViewById(R.id.video).asInstanceOf[VideoView]

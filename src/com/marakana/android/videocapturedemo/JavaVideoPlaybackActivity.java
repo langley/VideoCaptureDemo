@@ -15,8 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class JavaVideoPlaybackActivity extends Activity implements OnPreparedListener,
-        OnCompletionListener {
+public class JavaVideoPlaybackActivity extends Activity implements OnPreparedListener, OnCompletionListener {
     private static final String TAG = "VideoPlaybackActivity";
 
     private VideoView videoView;

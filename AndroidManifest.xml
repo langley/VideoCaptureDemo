@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VideoPlaybackActivity"
+            android:name="com.marakana.android.videocapturedemo.ScalaVideoPlaybackActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" />
     </application>

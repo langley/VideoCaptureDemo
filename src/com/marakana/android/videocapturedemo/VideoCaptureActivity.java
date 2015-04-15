@@ -178,7 +178,7 @@ public class VideoCaptureActivity extends Activity {
             Log.w(TAG, "File does not exist after stop: " + this.file.getAbsolutePath());
         } else {
             Log.d(TAG, "Going to display the video: " + this.file.getAbsolutePath());
-            Intent intent = new Intent(this, VideoPlaybackActivity.class);
+            Intent intent = new Intent(this, ScalaVideoPlaybackActivity.class);
             intent.setData(Uri.fromFile(file));
             super.startActivity(intent);
         }
