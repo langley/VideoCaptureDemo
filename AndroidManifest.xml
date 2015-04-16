@@ -18,7 +18,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".VideoCaptureActivity"
+            android:name="com.marakana.android.videocapturedemo.VideoCaptureActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
             <intent-filter>

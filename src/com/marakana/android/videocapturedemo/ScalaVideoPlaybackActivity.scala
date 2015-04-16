@@ -19,22 +19,23 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 class ScalaVideoPlaybackActivity extends SActivity with OnPreparedListener with OnCompletionListener {
-    val TAG = "VideoPlaybackActivity"
+    private val TAG = "VideoPlaybackActivity"
 
-    var videoView: VideoView =  super.findViewById(R.id.video).asInstanceOf[VideoView]
+    private var videoView: VideoView = null // super.findViewById(R.id.video).asInstanceOf[VideoView]
 
-    var backButton: ImageButton =  super.findViewById(R.id.backButton).asInstanceOf[ImageButton]
+    private var backButton: ImageButton =  null // super.findViewById(R.id.backButton).asInstanceOf[ImageButton]
 
-    var playButton: ImageButton = super.findViewById(R.id.playButton).asInstanceOf[ImageButton] 
+    private var playButton: ImageButton = null // super.findViewById(R.id.playButton).asInstanceOf[ImageButton] 
 
-    var stopButton: ImageButton =  super.findViewById(R.id.stopButton).asInstanceOf[ImageButton]
+    private var stopButton: ImageButton =  null // super.findViewById(R.id.stopButton).asInstanceOf[ImageButton]
 
-    var deleteButton: ImageButton = super.findViewById(R.id.deleteButton).asInstanceOf[ImageButton] 
+    private var deleteButton: ImageButton = null // super.findViewById(R.id.deleteButton).asInstanceOf[ImageButton] 
 
-    var uri: Uri = super.getIntent().getData();
+    private var uri: Uri = super.getIntent().getData();
 
     
     override def onCreate(bundle: Bundle): Unit = {
+        Log.d(TAG, "onCreate called")
         super.onCreate(bundle)
         super.setContentView(R.layout.video_playback)
         this.videoView = super.findViewById(R.id.video).asInstanceOf[VideoView]
