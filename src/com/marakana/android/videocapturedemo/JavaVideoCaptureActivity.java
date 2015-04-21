@@ -20,7 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class VideoCaptureActivity extends Activity {
+public class JavaVideoCaptureActivity extends Activity {
     private static final String TAG = "VideoCaptureActivity";
 
     Camera camera;
@@ -77,10 +77,10 @@ public class VideoCaptureActivity extends Activity {
             @Override
             protected void onPostExecute(Camera camera) {
                 if (camera == null) {
-                    Toast.makeText(VideoCaptureActivity.this, R.string.cannot_record,
+                    Toast.makeText(JavaVideoCaptureActivity.this, R.string.cannot_record,
                             Toast.LENGTH_SHORT);
                 } else {
-                    VideoCaptureActivity.this.initCamera(camera);
+                    JavaVideoCaptureActivity.this.initCamera(camera);
                 }
             }
         }.execute();
@@ -90,7 +90,7 @@ public class VideoCaptureActivity extends Activity {
         // we now have the camera
         this.camera = camera;
         // create a preview for our camera
-        this.cameraPreview = new CameraPreview(VideoCaptureActivity.this, this.camera);
+        this.cameraPreview = new CameraPreview(JavaVideoCaptureActivity.this, this.camera);
         // add the preview to our preview frame
         this.cameraPreviewFrame.addView(this.cameraPreview, 0);
         // enable just the record button
@@ -178,7 +178,7 @@ public class VideoCaptureActivity extends Activity {
             Log.w(TAG, "File does not exist after stop: " + this.file.getAbsolutePath());
         } else {
             Log.d(TAG, "Going to display the video: " + this.file.getAbsolutePath());
-            Intent intent = new Intent(this, ScalaVideoPlaybackActivity.class);
+            Intent intent = new Intent(this, com.marakana.android.videocapturedemo.JavaVideoPlaybackActivity.class);
             intent.setData(Uri.fromFile(file));
             super.startActivity(intent);
         }
@@ -190,7 +190,7 @@ public class VideoCaptureActivity extends Activity {
                         .getClass().getPackage().getName());
         if (!dir.exists() && !dir.mkdirs()) {
             Log.wtf(TAG, "Failed to create storage directory: " + dir.getAbsolutePath());
-            Toast.makeText(VideoCaptureActivity.this, R.string.cannot_record, Toast.LENGTH_SHORT);
+            Toast.makeText(JavaVideoCaptureActivity.this, R.string.cannot_record, Toast.LENGTH_SHORT);
             this.file = null;
         } else {
             this.file = new File(dir.getAbsolutePath(), new SimpleDateFormat(

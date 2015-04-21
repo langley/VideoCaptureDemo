@@ -20,6 +20,7 @@ import android.widget.VideoView;
 
 class ScalaVideoPlaybackActivity extends SActivity with OnPreparedListener with OnCompletionListener {
     private val TAG = "VideoPlaybackActivity"
+    Log.d(TAG, "initializer run!")
 
     private var videoView: VideoView = null // super.findViewById(R.id.video).asInstanceOf[VideoView]
 
@@ -33,17 +34,14 @@ class ScalaVideoPlaybackActivity extends SActivity with OnPreparedListener with 
 
     private var uri: Uri = super.getIntent().getData();
 
-    
-    override def onCreate(bundle: Bundle): Unit = {
-        Log.d(TAG, "onCreate called")
-        super.onCreate(bundle)
-        super.setContentView(R.layout.video_playback)
-        this.videoView = super.findViewById(R.id.video).asInstanceOf[VideoView]
-        this.uri = super.getIntent().getData();
-        this.backButton = super.findViewById(R.id.backButton).asInstanceOf[ImageButton]
-        this.playButton = super.findViewById(R.id.playButton).asInstanceOf[ImageButton]
-        this.stopButton = super.findViewById(R.id.stopButton).asInstanceOf[ImageButton]
-        this.deleteButton = super.findViewById(R.id.deleteButton).asInstanceOf[ImageButton]
+    onCreate {
+     setContentView(R.layout.video_playback)
+     videoView = findViewById(R.id.video).asInstanceOf[VideoView]
+     backButton = findViewById(R.id.backButton).asInstanceOf[ImageButton]
+     playButton = findViewById(R.id.playButton).asInstanceOf[ImageButton]
+     stopButton = findViewById(R.id.stopButton).asInstanceOf[ImageButton]
+     deleteButton = findViewById(R.id.deleteButton).asInstanceOf[ImageButton]
+     uri = getIntent.getData
     }
 
     private def toggleButtons(playing: Boolean): Unit = {
